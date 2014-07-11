@@ -6,3 +6,4 @@
 2. `cd ~`
 3. `git clone git@github.com:davejachimiak/.dotfiles.git`
 4. `rcup -v`
+5. `vi +BundleInstall +qall`
