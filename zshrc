@@ -15,6 +15,9 @@ export PATH=$PATH:/Users/davejachimiak/github/redo
 export PATH=$PATH:/Users/davejachimiak/Library/Haskell/bin
 export PATH=$PATH:/Users/davejachimiak/bin
 
+# go
+export GOPATH=~/github
+
 # aliases
 ## *nix
 alias cp="cp -iv"
@@ -46,3 +49,6 @@ compdef g=git
 alias gl="g l"
 alias gd="g diff"
 alias gbam="g fetch && git rebase origin/master"
+
+# added by travis gem
+source /Users/davejachimiak/.travis/travis.sh

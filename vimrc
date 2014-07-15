@@ -1,31 +1,32 @@
 "vundle
 set nocompatible
 filetype off
-set shell=/bin/zsh
+set shell=/bin/bash
                                 
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-endwise'
-Bundle 'godlygeek/tabular'
-Bundle 'SuperTab'
-Bundle 'Rename'
-Bundle 'go.vim'
-Bundle 'The-NERD-Commenter'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-endwise'
+Plugin 'godlygeek/tabular'
+Plugin 'SuperTab'
+Plugin 'Rename'
+Plugin 'go.vim'
+Plugin 'The-NERD-Commenter'
 
-Bundle 'mustache/vim-mustache-handlebars'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-rbenv'
-Bundle 'tpope/vim-markdown'
-Bundle 'davejachimiak/chazmine'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'vim-scripts/hlint'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-cucumber'
+Plugin 'tpope/vim-rbenv'
+Plugin 'tpope/vim-markdown'
+Plugin 'davejachimiak/chazmine'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'vim-scripts/hlint'
 
+call vundle#end()
 filetype plugin indent on
 
 "custom
