@@ -13,7 +13,7 @@ Plugin 'tpope/vim-endwise'
 Plugin 'godlygeek/tabular'
 Plugin 'SuperTab'
 Plugin 'Rename'
-Plugin 'go.vim'
+Plugin 'jnwhiteh/vim-golang'
 Plugin 'The-NERD-Commenter'
 
 Plugin 'mustache/vim-mustache-handlebars'
@@ -36,6 +36,8 @@ set cursorline
 set wildmode=longest,list,full
 set wildmenu
 set ts=2 sw=2 expandtab
+
+let g:testRunner=0
 
 "statusline
 set laststatus=2
@@ -62,6 +64,19 @@ noremap <leader>e :e <C-R>=expand('%:p:h').'/'<cr>
 nmap <leader>l :call RunTestCommand(line('.'))<CR>
 nmap <leader>a :call RunTestCommand()<CR>         
 
+command! AsyncTests execute s:asyncTests()
+command! NoAsyncTests execute s:noAsyncTests()
+
+function! s:asyncTests()
+  let g:testRunner=1
+  execute 'echo "Async Tests Engaged!"'
+endfunction
+
+function! s:noAsyncTests()
+  let g:testRunner=0
+  execute 'echo "Synchronous Tests Engaged!"'
+endfunction
+
 function! GetTestCommand()                                                                     
   if expand('%:r') =~ '_spec$'                                                                      
     return 'bundle exec rspec --color'                                                                    
@@ -74,18 +89,27 @@ endfunction
 
 function! RunTestCommand(...)
   let cmd = GetTestCommand()
+  let cmdWithFile = cmd . ' ' . expand('%') . (a:0 == 1 ? ':'.line('.') : '')
 
   " if there's a command update the test command register (t)                                       
-  if cmd != '0'                                                                                     
-    let @t = ':!' . cmd . ' ' . expand('%') . (a:0 == 1 ? ':'.line('.') : '')                     
-  endif                                                                                             
+  if cmd != '0'
+    if g:testRunner
+      let @t = ':silent !echo "' . cmdWithFile . '" > test-commands'
+    else
+      let @t = ':!' . cmdWithFile
+    endif
+  endif                             
 
   " if the test command register isn't empty, excecute it.                                          
-  if strlen(@t) > 0                                                                                 
-    execute @t                                                                                    
-  elseif                                                                                            
-    echoerr "No test command to run"                                                              
-  end                                                                                               
+  if strlen(@t) > 0                                
+    execute @t
+
+    if g:testRunner
+      execute "redraw!"
+    endif
+  else
+    echoerr "No test command to run"
+  endif
 endfunction
 
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
