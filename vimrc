@@ -69,7 +69,7 @@ command! NoAsyncTests execute s:noAsyncTests()
 
 function! s:asyncTests()
   let g:testRunner=1
-  execute 'echo "Async Tests Engaged!"'
+  execute ':silent :echo "Async Tests Engaged!"'
 endfunction
 
 function! s:noAsyncTests()
@@ -78,8 +78,14 @@ function! s:noAsyncTests()
 endfunction
 
 function! GetTestCommand()                                                                     
+  if !empty(glob("./.zeus.sock"))
+    let cmdPrefix = "zeus "
+  else
+    let cmdPrefix = "bundle exec "
+  endif
+
   if expand('%:r') =~ '_spec$'                                                                      
-    return 'bundle exec rspec --color'                                                                    
+    return cmdPrefix . 'rspec --color'                                                                    
   elseif expand('%') =~ '\.feature$'                                                                
     return 'bundle exec cucumber'                                                                 
   else                                                                                              
@@ -90,6 +96,9 @@ endfunction
 function! RunTestCommand(...)
   let cmd = GetTestCommand()
   let cmdWithFile = cmd . ' ' . expand('%') . (a:0 == 1 ? ':'.line('.') : '')
+
+  " save files before running tests
+  execute ":wa"
 
   " if there's a command update the test command register (t)                                       
   if cmd != '0'

@@ -25,6 +25,7 @@ alias rm="rm -iv"
 alias mv="mv -iv"
 alias ls="ls -FGh"
 alias less="less -R"
+alias via="vi -c AsyncTests"
 
 ## Ruby
 alias b="bundle"
