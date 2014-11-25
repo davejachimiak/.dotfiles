@@ -12,8 +12,9 @@ PROMPT="%{$fg[red]%}%~ %{$fg[green]%}\$\$\$ %{$reset_color%}"
 
 # add to path
 export PATH=$PATH:/Users/davejachimiak/github/redo
-export PATH=$PATH:/Users/davejachimiak/Library/Haskell/bin
-export PATH=$PATH:/Users/davejachimiak/bin
+export PATH="$HOME/Library/Haskell/bin:$PATH"
+export PATH=/Users/davejachimiak/bin:$PATH
+export PATH=/Users/davejachimiak/go:$PATH
 
 # go
 export GOPATH=~/github
@@ -26,6 +27,7 @@ alias mv="mv -iv"
 alias ls="ls -FGh"
 alias less="less -R"
 alias via="vi -c AsyncTests"
+alias e="ember"
 
 ## Ruby
 alias b="bundle"
@@ -46,6 +48,7 @@ function g {
   fi
 }
 compdef g=git
+export GIT_EDITOR=vi
 
 alias gl="g l"
 alias gd="g diff"

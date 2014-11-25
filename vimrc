@@ -25,6 +25,10 @@ Plugin 'davejachimiak/chazmine'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'vim-scripts/hlint'
+Plugin 'kien/ctrlp.vim'
+Plugin 'rking/ag.vim'
+Plugin 'rizzatti/dash.vim'
+Plugin 'esneider/YUNOcommit.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -36,6 +40,7 @@ set cursorline
 set wildmode=longest,list,full
 set wildmenu
 set ts=2 sw=2 expandtab
+set relativenumber
 
 let g:testRunner=0
 
@@ -49,7 +54,7 @@ set statusline+=%3*\ col:%c
 "mappings
 let mapleader=' '
 
-imap jj <Esc>
+inoremap jj <Esc>
 cnoremap jj <Esc>
 
 noremap <C-l> <C-W>l
@@ -100,7 +105,7 @@ function! RunTestCommand(...)
   " save files before running tests
   execute ":wa"
 
-  " if there's a command update the test command register (t)                                       
+  " if there's a command update the test command register (t)
   if cmd != '0'
     if g:testRunner
       let @t = ':silent !echo "' . cmdWithFile . '" > test-commands'
@@ -138,3 +143,8 @@ endfunction
 syntax on
 set t_Co=256
 colorscheme Tomorrow-Night-Eighties
+
+" ctrl-p custom
+let g:ctrlp_custom_ignore = {
+      \'dir': '\v[\/](node_modules|bower_components|tmp|dist)'
+      \}
