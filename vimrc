@@ -1,5 +1,6 @@
 "vundle
 set nocompatible
+filetype on
 filetype off
 set shell=/bin/bash
                                 
@@ -13,9 +14,9 @@ Plugin 'tpope/vim-endwise'
 Plugin 'godlygeek/tabular'
 Plugin 'SuperTab'
 Plugin 'Rename'
-Plugin 'jnwhiteh/vim-golang'
 Plugin 'The-NERD-Commenter'
 
+Plugin 'othree/yajs'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-cucumber'
