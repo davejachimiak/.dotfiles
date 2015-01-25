@@ -14,10 +14,7 @@ PROMPT="%{$fg[red]%}%~ %{$fg[green]%}\$\$\$ %{$reset_color%}"
 export PATH=$PATH:/Users/davejachimiak/github/redo
 export PATH="$HOME/Library/Haskell/bin:$PATH"
 export PATH=/Users/davejachimiak/bin:$PATH
-export PATH=/Users/davejachimiak/go:$PATH
-
-# go
-export GOPATH=~/github
+export PATH=./bin:$PATH
 
 # aliases
 ## *nix
@@ -53,6 +50,3 @@ export GIT_EDITOR=vi
 alias gl="g l"
 alias gd="g diff"
 alias gbam="g fetch && git rebase origin/master"
-
-# added by travis gem
-source /Users/davejachimiak/.travis/travis.sh
