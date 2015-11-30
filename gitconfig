@@ -28,6 +28,7 @@
 [core]
   editor = /usr/bin/vim
   excludesfile = /Users/davejachimiak/.gitignore
+	autocrlf = false
 [apply]
   whitespace = nowarn
 [http]
@@ -49,6 +50,3 @@
 
 [hub]
 protocol = https
-
-[credential]
-helper = /opt/boxen/bin/boxen-git-credential

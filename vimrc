@@ -9,14 +9,17 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'lambdatoast/elm.vim'
+Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-endwise'
 Plugin 'godlygeek/tabular'
 Plugin 'SuperTab'
 Plugin 'Rename'
 Plugin 'The-NERD-Commenter'
+Plugin 'haskell.vim'
+Plugin 'jeroenbourgois/vim-actionscript'
 
-Plugin 'othree/yajs'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-cucumber'
@@ -30,6 +33,10 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'esneider/YUNOcommit.vim'
+Plugin 'mtscout6/vim-cjsx'
+Plugin 'justinmk/vim-syntax-extra'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 
 call vundle#end()
 filetype plugin indent on
@@ -149,3 +156,6 @@ colorscheme Tomorrow-Night-Eighties
 let g:ctrlp_custom_ignore = {
       \'dir': '\v[\/](node_modules|bower_components|tmp|dist)'
       \}
+
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp//
