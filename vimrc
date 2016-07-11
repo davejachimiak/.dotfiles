@@ -15,10 +15,13 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-endwise'
 Plugin 'godlygeek/tabular'
 Plugin 'SuperTab'
+Plugin 'sql.vim'
 Plugin 'Rename'
 Plugin 'The-NERD-Commenter'
 Plugin 'haskell.vim'
 Plugin 'jeroenbourgois/vim-actionscript'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'vim-scripts/gnuplot.vim'
 
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'tpope/vim-rails'
@@ -154,7 +157,7 @@ colorscheme Tomorrow-Night-Eighties
 
 " ctrl-p custom
 let g:ctrlp_custom_ignore = {
-      \'dir': '\v[\/](node_modules|bower_components|tmp|dist)'
+      \'dir': '\[\/](node_modules|bower_components|tmp|dist)'
       \}
 
 set backupdir=~/.vim/backup//

@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
 touch ~/.private.zsh
+mkdir ./.vim/backup
+mkdir ./.vim/swp

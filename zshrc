@@ -8,7 +8,7 @@ zstyle ':completion:*' special-dirs true
 
 # prompt
 autoload -U colors && colors
-PROMPT="%{$fg[red]%}%~ %{$fg[green]%}\$\$\$ %{$reset_color%}"
+PROMPT="%{$fg[grey]%}[%n] %{$fg[red]%}%~ %{$fg[green]%}\$\$\$ %{$reset_color%}"
 
 # add to path
 export PATH=$PATH:/Users/davejachimiak/github/redo
