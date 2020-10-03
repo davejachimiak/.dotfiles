@@ -8,7 +8,7 @@ filetype off
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-
+Plugin 'wmayner/python3-syntax'
 Plugin 'lambdatoast/elm.vim'
 Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-fugitive'
@@ -16,7 +16,7 @@ Plugin 'tpope/vim-endwise'
 Plugin 'godlygeek/tabular'
 Plugin 'fatih/vim-go'
 Plugin 'SuperTab'
-Plugin 'sql.vim'
+Plugin 'sqlcomplete.vim'
 Plugin 'Rename'
 Plugin 'The-NERD-Commenter'
 Plugin 'haskell.vim'
@@ -28,6 +28,9 @@ Plugin 'hashivim/vim-terraform'
 Plugin 'vim-scripts/java.vim'
 Plugin 'Superbil/llvm.vim'
 Plugin 'rust-lang/rust.vim'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'elzr/vim-json'
+Plugin 'rgrinberg/vim-ocaml'
 
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'tpope/vim-rails'
@@ -103,6 +106,14 @@ function! s:noAsyncTests()
 endfunction
 
 function! GetTestCommand()                                                                     
+  if expand('%') =~ '_test.ex'
+    if filereadable("bin/exec")
+      return 'bin/exec mix test'
+    else
+      return "mix test"
+    endif
+  endif
+
   if !empty(glob("./.zeus.sock"))
     let cmdPrefix = "zeus "
   else
@@ -110,7 +121,7 @@ function! GetTestCommand()
   endif
 
   if expand('%:r') =~ '_spec$'                                                                      
-    return cmdPrefix . 'rspec --color'                                                                    
+    return cmdPrefix . 'bundle exec rspec --color'
   elseif expand('%') =~ '\.feature$'                                                                
     return 'bundle exec cucumber'                                                                 
   else                                                                                              
@@ -159,6 +170,9 @@ function! s:align()
   endif
 endfunction
 
+"font
+set guifont=Fira\ Code:h12
+
 "colorscheme
 syntax on
 set t_Co=256
@@ -166,8 +180,21 @@ colorscheme Tomorrow-Night-Eighties
 
 " ctrl-p custom
 let g:ctrlp_custom_ignore = {
-      \'dir': '\[\/](node_modules|bower_components|tmp|dist)'
+      \'dir': '\v[\/](node_modules|bower_components|tmp|dist|_build)',
+      \'file': '\v\.(beam)$'
       \}
 
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
+
+" run current file as executable
+noremap <leader>r :!%:p<cr>
+
+" go
+let g:go_highlight_structs = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+let g:sql_type_default = "postgresql"

@@ -25,6 +25,8 @@ alias ls="ls -FGh"
 alias less="less -R"
 alias via="vi -c AsyncTests"
 alias e="ember"
+alias tf="terraform"
+alias doco="docker-compose"
 
 ## Ruby
 alias b="bundle"
