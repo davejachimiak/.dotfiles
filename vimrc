@@ -1,10 +1,10 @@
 "vundle
 set nocompatible
-filetype on
-filetype off
 set shell=/bin/bash
                                 
 set rtp+=~/.vim/bundle/Vundle.vim
+filetype on
+filetype off
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
@@ -14,6 +14,7 @@ Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-endwise'
 Plugin 'godlygeek/tabular'
+Plugin 'fatih/vim-go'
 Plugin 'SuperTab'
 Plugin 'sql.vim'
 Plugin 'Rename'
@@ -22,6 +23,11 @@ Plugin 'haskell.vim'
 Plugin 'jeroenbourgois/vim-actionscript'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'vim-scripts/gnuplot.vim'
+Plugin 'wlangstroth/vim-racket'
+Plugin 'hashivim/vim-terraform'
+Plugin 'vim-scripts/java.vim'
+Plugin 'Superbil/llvm.vim'
+Plugin 'rust-lang/rust.vim'
 
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'tpope/vim-rails'
@@ -43,6 +49,9 @@ Plugin 'mxw/vim-jsx'
 
 call vundle#end()
 filetype plugin indent on
+
+" so that rust.vim can handle *.rs file extensions
+au BufRead,BufNewFile *.rs set filetype=rust
 
 "custom
 set number 
