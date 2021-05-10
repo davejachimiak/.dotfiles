@@ -31,6 +31,7 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'elzr/vim-json'
 Plugin 'rgrinberg/vim-ocaml'
+Plugin 'leafgarland/typescript-vim'
 
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'tpope/vim-rails'
